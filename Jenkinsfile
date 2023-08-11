@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Build the Docker image using the Dockerfile in the repository
                 script {
-                    docker.build("web-app-image:${env.BUILD_ID}")
+                    docker.build("tejaniharsh/web-app-image:${env.BUILD_ID}")
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
                 // Push the Docker image to a Docker registry (you'll need to configure this)
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-credentials-id') {
-                        docker.image("web-app-image:${env.BUILD_ID}").push()
+                        docker.image("tejaniharsh/web-app-image:${env.BUILD_ID}").push()
                     }
                 }
             }
