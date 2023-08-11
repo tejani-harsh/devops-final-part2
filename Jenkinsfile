@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Push the Docker image to a Docker registry (you'll need to configure this)
                 script {
-                    docker.withRegistry('https://registry.example.com', 'docker-credentials-id') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-credentials-id') {
                         docker.image("web-app-image:${env.BUILD_ID}").push()
                     }
                 }
